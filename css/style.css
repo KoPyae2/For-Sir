@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height:100vh;
+    background-image: url("../img/bg.jpg");
+    background-size: 100% 100%;
+
+    margin: 0;
+    overflow: hidden;
+}
+
+.intro{
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: initial;
+
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+
+    overflow: hidden;
+}
+.intro .door{
+    width: 250px;
+    height: 60vh;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.01);
+    border: 3px solid rgba(255,255,255,0.5);
+
+    transform-style: preserve-3d;
+    perspective: 700px;
+    transition: transform 9s;
+
+    box-shadow: 0 5px 10px rgba(218,66,27,0.9),
+    0 0 20px rgba(218,66,27,0.8),
+    0 0 50px rgba(218,66,27,0.7),
+    0 0 100px rgba(218,66,27,0.6),
+    0 0 300px rgba(218,66,27,0.5),
+    0 0 500px rgba(218,66,27,0.4),
+    0 0 800px rgba(218,66,27,0.3),
+    0 0 0 100vmax rgba(0,0,0,1);
+
+    position: relative;
+}
+
+
+
+.intro .door .window{
+    width: 100%;
+    height: 100%;
+    background: #000;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform-origin: left;
+    transform-style: preserve-3d;
+    perspective: 700px;
+    transition: 5s;
+
+}
+
+.window p{
+    color: #fff;
+
+    position: absolute;
+    top:30%;
+    left: 50%;
+    transform: translate(-50%);
+    backface-visibility:hidden;
+}
+.intro .door.opened .window{
+    transform: rotateY(-135deg);
+}
+
+.intro .door .window .bell{
+    width: 25px;
+    height: 25px;
+    box-shadow: inset 0 0 10px #9db09d,
+    0 0 8px #5f655f,
+    0 0 5px #565b56,
+    0 0 2px #353835;
+
+    background: #31302e;
+
+    border-radius: 50px;
+
+    position: absolute;
+    top: 50%;
+    right: 2%;
+
+    backface-visibility:hidden;
+
+    cursor: pointer;
+}
+
+/*----------img box---------*/
+.inside{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+}
+.inside header{
+    width: 70%;
+    height: 20%;
+    background-image: url("../img/h1bg.png");
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.8),
+    0 0 10px rgba(0,0,0,0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    position: absolute;
+    top:5%;
+    overflow: hidden;
+
+    animation: header-bg 60s linear infinite;
+}
+
+@keyframes header-bg {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+.inside header h1{
+    font-family:'Acme', sans-serif;
+    font-weight: bold;
+    font-size: 5vw;
+    letter-spacing: 1vw;
+    color: #FBE307;
+    -webkit-text-stroke: 1px #00A859;
+    text-shadow: 0 0 5px #ff0000,
+    0 0 10px #ff0000,
+    0 0 15px #ff0000,
+    0 0 20px #ff0000,
+    0 0 30px #ff0000,
+    0 0 40px #ff0000;
+
+    animation: text 7s linear infinite;
+}
+
+@keyframes text {
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(2deg);
+    }
+    50%{
+        transform: rotate(0deg);
+    }
+    75%{
+        transform: rotate(-2deg);
+    }
+    110%{
+        transform: rotate(0deg);
+    }
+}
+
+.inside .card-container{
+    width: 15%;
+    height: 0;
+
+    position: absolute;
+    top:28%;
+
+    z-index: 3;
+}
+.card-container .card-one{
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/blue-card.jpg");
+    background-size: cover;
+    border-radius: 10px;
+    z-index: 1;
+
+    position: absolute;
+    left: -130%;
+    overflow: hidden;
+    transition: transform 1s;
+}
+
+.card-one:hover{
+    transform: rotate(-10deg) scale(1.1);
+
+}
+.card-container .card-two{
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/yellow-card.jpg");
+    background-size: cover;
+    border-radius: 10px;
+    z-index: 2;
+
+    position: absolute;
+    overflow: hidden;
+    transition: transform 1s;
+}
+.card-two:hover{
+    transform: scale(1.1);
+}
+.card-container .card-three{
+    width: 100%;
+    height: 100%;
+    background-image: url("../img/red-card.jpg");
+    background-size: cover;
+    border-radius: 10px;
+    z-index: 3;
+
+    position: absolute;
+    right: -130%;
+    overflow: hidden;
+    transition: transform 1s;
+}
+.card-three:hover{
+    transform: rotate(10deg) scale(1.1);
+}
+.card-one::before , .card-two::before , .card-three::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #7DC5ED;
+
+    position: absolute;
+    top: 0;
+    left:0;
+
+    filter: blur(20px);
+    overflow: hidden;
+    transition:top 2s;
+}
+.card-two::before{
+    background: yellow;
+}
+
+.card-three::before{
+    background: red;
+}
+.card-one:hover::before , .card-two:hover::before , .card-three:hover::before{
+    top: -100%;
+}
+
+
+footer h1{
+    font-family: 'Architects Daughter', cursive;
+    color: aliceblue;
+    text-shadow: 2px 2px 5px rgba(0,0,0,1);
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+}
+a{
+    background: transparent;
+    font-size: 60px;
+    color: #F9D805;
+    text-shadow: 5px 5px 10px black;
+
+    position: absolute;
+    top: 0;
+    left: 1%;
+}
+a:hover{
+    transform: translateY(2px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:600px){
+    .intro .door{
+        width: 40%;
+        height: 40%;
+    }
+
+    .inside h1{
+        top: 5%;
+    }
+    .inside .img-container{
+        width: 60%;
+        height: 15%;
+        top: 20%;
+    }
+    .inside ul li{
+        width: 10%;
+        height: 2.5vh;
+    }
+    .inside header h1{
+        font-size: 3.5vh;
+    }
+
+    .inside header{
+        height: 15%;
+    }
+    .inside .card-container {
+        width: 23%;
+        top: 40%;
+    }
+    footer h1{
+        font-size: 12px;
+    }
+}
+
+
+
+
